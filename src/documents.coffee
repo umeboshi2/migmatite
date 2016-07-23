@@ -3,7 +3,6 @@ _ = require 'underscore'
 Backbone = require 'backbone'
 Marionette = require 'backbone.marionette'
 
-{ BaseLocalStorageCollection } = require 'lscollection'
 { BaseCollection } = require 'collections'
 
 MainChannel = Backbone.Radio.channel 'global'
