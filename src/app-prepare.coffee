@@ -14,7 +14,7 @@ Views = require './views'
 MainChannel = Backbone.Radio.channel 'global'
 
 
-prepare_app = (app, appmodel, root_doc) ->
+prepare_app = (app, appmodel) ->
   regions = appmodel.get 'regions'
   if 'modal' of regions
     regions.modal = BootstrapModalRegion
@@ -56,7 +56,7 @@ prepare_app = (app, appmodel, root_doc) ->
       #console.log "create signal #{signal}"
       MainChannel.request signal
     # build main page layout
-    MainChannel.request 'mainpage:init', appmodel, root_doc
+    MainChannel.request 'mainpage:init', appmodel
     # start the approutes
     # the 'frontdoor_app' should handle the '' <blank>
     # route for the initial page.
