@@ -10,10 +10,6 @@ MainChannel = Backbone.Radio.channel 'global'
 MessageChannel = Backbone.Radio.channel 'messages'
 DocChannel = Backbone.Radio.channel 'static-documents'
 
-class StaticDocumentJson extends Backbone.Model
-  url: ->
-    "/assets/documents/#{@id}.json"
-
 class StaticDocument extends Backbone.Model
   url: ->
     "/assets/documents/#{@id}.md"
@@ -21,7 +17,6 @@ class StaticDocument extends Backbone.Model
   fetch: (options) ->
     options = _.extend options || {},
       dataType: 'text'
-    console.log "new fetch options", options
     super options
 
   parse: (response) ->
@@ -30,6 +25,7 @@ class StaticDocument extends Backbone.Model
 class StaticDocumentCollection extends BaseCollection
   model: StaticDocument
   
+
   
 DocChannel.reply 'get-document', (name) ->
   model = new StaticDocument
