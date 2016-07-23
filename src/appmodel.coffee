@@ -52,11 +52,6 @@ appmodel = new BaseAppModel
   applets:
     [
       {
-        appname: 'editcontents'
-        name: 'Edit Pages'
-        url: '#editor'
-      }
-      {
         appname: 'phaserdemo'
         name: 'Phaser'
         url: '#phaser'
@@ -65,6 +60,11 @@ appmodel = new BaseAppModel
         appname: 'hubby'
         name: 'Hubby'
         url: '#hubby'
+      }
+      {
+        appname: 'dbdocs'
+        name: 'DB Docs'
+        url: '#dbdocs'
       }
     ]
   regions: appregions

@@ -11,7 +11,8 @@ AppModel = require './appmodel'
 
 require './clipboard'
 require './messages'
-require './documents'
+require './static-documents'
+require './github-readmes'
 
 #require 'bootstrap-fileinput-css'
 #require 'bootstrap-fileinput-js'
@@ -25,10 +26,10 @@ prepare_app = require 'app-prepare'
 
 MainChannel = Backbone.Radio.channel 'global'
 MessageChannel = Backbone.Radio.channel 'messages'
-ResourceChannel = Backbone.Radio.channel 'resources'
+DocChannel = Backbone.Radio.channel 'static-documents'
 
 #FIXME
-window.rchnnl = ResourceChannel
+window.dchnnl = DocChannel
 
 if __DEV__
   console.warn "__DEV__", __DEV__, "DEBUG", DEBUG
@@ -98,13 +99,15 @@ MainChannel.on 'appregion:navbar:displayed', ->
 #  require.context "#{applet.appname}", false, /^main.coffee$/
 #  require "#{applet.appname}/main"
 require 'frontdoor/main'
-require 'editcontents/main'
+require 'dbdocs/main'
 require 'phaserdemo/main'
 require 'hubby/main'
  
 
 
 app = new Marionette.Application()
+
+prepare_app app, AppModel
 
 if __DEV__
   # DEBUG attach app to window
@@ -113,33 +116,7 @@ if __DEV__
   
 
 # Start the Application
-#app.start()
-
-docs = ResourceChannel.request 'app-documents'
-#docs.fetch ->
-response = docs.fetch()
-response.done -> 
-  #root_doc = ResourceChannel.request 'get-document', 'startdoc'
-  console.log "docs fetched", docs
-  root_doc = docs.get 'startdoc'
-  # DEBUG
-  if __DEV__
-    window.root_doc = root_doc
-    window.tc = require 'teacup'
-  if root_doc is undefined
-    console.warn "root_doc is undefined!!"
-  if root_doc is undefined
-    console.error 'bad, bad, bad'
-  else
-    prepare_app app, AppModel, root_doc
-    app.start()
-    $('title').text root_doc.get 'title'
-  
-response.fail -> 
-  #MessageChannel.request 'display-message', 'Error loading Site Documents', 'danger'
-  $('h1').text "Failure"
-  $('.col-sm-6').prepend('<a href="/">reload</a>')
-
+app.start()
 
 module.exports = app
 
