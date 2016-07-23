@@ -60,7 +60,7 @@ PageItem = tc.renderable (page) ->
   item_btn = ".btn.btn-default.btn-xs"
   tc.li ".page-item.list-group-item.row", ->
     tc.div '.col-md-3.pull-left', ->
-      tc.a href:"#frontdoor/view/#{page.name}", page.name
+      tc.a href:"#dbdocs/view/#{page.name}", page.name
     tc.div '.col-md-1.pull-right.button-group', ->
       tc.button ".edit-page.#{item_btn}.btn-primary.fa.fa-edit"
       tc.button ".delete-page.#{item_btn}.btn-danger.fa.fa-close"

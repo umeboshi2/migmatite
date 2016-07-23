@@ -6,6 +6,8 @@ BootStrapAppRouter = require 'bootstrap_router'
 
 Controller = require './controller'
 
+require './documents'
+
 MainChannel = Backbone.Radio.channel 'global'
 ResourceChannel = Backbone.Radio.channel 'resources'
 
@@ -13,14 +15,12 @@ ResourceChannel = Backbone.Radio.channel 'resources'
 
 class Router extends BootStrapAppRouter
   appRoutes:
-    'editor': 'list_pages'
-    'editor/newpage': 'new_page'
-    'editor/edit/:name': 'edit_page'
+    'dbdocs': 'list_pages'
+    'dbdocs/newpage': 'new_page'
+    'dbdocs/edit/:name': 'edit_page'
     
-MainChannel.reply 'applet:editcontents:route', () ->
-  console.log "editcontents:route being handled"
+MainChannel.reply 'applet:dbdocs:route', () ->
   controller = new Controller MainChannel
-  #controller.root_doc = MainChannel.request 'main:app:current-document'
   controller.root_doc = ResourceChannel.request 'get-document', 'startdoc'
   router = new Router
     controller: controller

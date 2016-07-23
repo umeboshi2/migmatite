@@ -44,7 +44,7 @@ class PageItemView extends Backbone.Marionette.ItemView
     
   edit_page: ->
     pagename = @model.get 'name'
-    navigate_to_url "#editor/edit/#{pagename}"
+    navigate_to_url "#dbdocs/edit/#{pagename}"
     
   delete_page: ->
     console.log "delete_page", @model
@@ -73,7 +73,7 @@ class PageListView extends Backbone.Marionette.CompositeView
   
   make_new_page: ->
     pagename = @ui.new_page_name.val()
-    navigate_to_url "#editor/newpage"
+    navigate_to_url "#dbdocs/newpage"
     
   
 

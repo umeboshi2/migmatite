@@ -5,7 +5,7 @@ PIXI = require 'pixi'
 p2 = require 'p2'
 Phaser = require 'phaser'
 
-Templates = require './templates'
+tc = require 'teacup'
 
 
 { remove_trailing_slashes
@@ -13,6 +13,20 @@ Templates = require './templates'
   random_choice } = require 'apputil'
 
 MainChannel = Backbone.Radio.channel 'global'
+
+
+
+
+########################################
+# Templates
+########################################
+PhaserViewTemplate = tc.renderable (model) ->
+  tc.div '#phaserdemo'
+########################################
+
+
+
+
 
 collect_the_damned_star = (player, star) ->
   console.log 'collect_the_damned_star', player, star
@@ -175,7 +189,7 @@ class PhaserDemo extends Backbone.Marionette.Object
     @scoreText.text = "Score: #{@current_score}"
 
 class FrontDoorMainView extends Backbone.Marionette.ItemView
-  template: Templates.PhaserViewTemplate
+  template: PhaserViewTemplate
 
   onDomRefresh: ->
     game = new PhaserDemo()
