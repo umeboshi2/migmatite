@@ -8,7 +8,7 @@ Controller = require './controller'
 
 
 MainChannel = Backbone.Radio.channel 'global'
-ResourceChannel = Backbone.Radio.channel 'resources'
+
 
 class Router extends BootStrapAppRouter
   appRoutes:
@@ -16,12 +16,11 @@ class Router extends BootStrapAppRouter
     'frontdoor': 'frontdoor'
     'frontdoor/view': 'frontdoor'
     'frontdoor/view/:name': 'view_page'
-
+    #FIXME
+    'pages/:name': 'view_page'
+    
 MainChannel.reply 'applet:frontdoor:route', () ->
-  #console.log "frontdoor:route being handled"
   controller = new Controller MainChannel
-  #controller.root_doc = MainChannel.request 'main:app:get-document', 'startdoc'
-  controller.root_doc = ResourceChannel.request 'get-document', 'startdoc'
   router = new Router
     controller: controller
 

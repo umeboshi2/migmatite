@@ -63,9 +63,14 @@ FolderViewTemplate = tc.renderable (doc) ->
                 tc.a href:href, child.meta.modification_date
 
 
+DefaultStaticDocumentTemplate = tc.renderable (doc) ->
+  #atts = doc.data.attributes
+  tc.article '.document-view.content', ->
+    tc.div '.body', ->
+      tc.raw marked doc.content
+
 module.exports =
   frontdoor_main: frontdoor_main
   DefaultViewTemplate: DefaultViewTemplate
   FolderViewTemplate: FolderViewTemplate
-
-
+  DefaultStaticDocumentTemplate: DefaultStaticDocumentTemplate

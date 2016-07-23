@@ -7,27 +7,31 @@ marked = require 'marked'
 
 MainChannel = Backbone.Radio.channel 'global'
 MessageChannel = Backbone.Radio.channel 'messages'
-ResourceChannel = Backbone.Radio.channel 'resources'
+DocChannel = Backbone.Radio.channel 'static-documents'
 
 class Controller extends MainController
-  _view_resource: ->
+  _view_resource: (doc) ->
     @_make_editbar()
     require.ensure [], () =>
       { FrontDoorMainView } = require './views'
       view = new FrontDoorMainView
-        model: @root_doc
+        model: doc
       @_show_content view
     # name the chunk
     , 'frontdoor-view-resource'
     
     
   view_page: (name) ->
-    @root_doc = ResourceChannel.request 'get-document', name
-    @_view_resource()
+    doc = DocChannel.request 'get-document', name
+    response = doc.fetch()
+    response.done =>
+      @_view_resource doc
+    response.fail =>
+      MessageChannel.request 'display-message', 'Failed to get document', 'danger'
+      
     
   frontdoor: ->
-    @root_doc = ResourceChannel.request 'get-document', 'startdoc'
-    @_view_resource()
+    @view_page 'intro'
 
 module.exports = Controller
 

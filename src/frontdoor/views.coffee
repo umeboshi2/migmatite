@@ -12,7 +12,7 @@ FDTemplates = require './templates'
 MainChannel = Backbone.Radio.channel 'global'
 
 class FrontDoorMainView extends Backbone.Marionette.ItemView
-  template: FDTemplates.DefaultViewTemplate
+  template: FDTemplates.DefaultStaticDocumentTemplate
 
 module.exports =
   FrontDoorMainView: FrontDoorMainView
