@@ -10,7 +10,7 @@ tc = require 'teacup'
 
 { remove_trailing_slashes
   make_json_post
-  random_choice } = require 'apputil'
+  random_choice } = require 'agate/src/apputil'
 
 MainChannel = Backbone.Radio.channel 'global'
 
@@ -101,7 +101,6 @@ class DemoGame extends Backbone.Marionette.Object
       @create_star i
       
   collect_the_damned_star: (player, star) =>
-    console.log "collectStar called", player, star
     star.kill()
     @current_score += 10
     @scoreText.text = "Score: #{@current_score}"
@@ -118,10 +117,10 @@ class PhaserDemo extends Backbone.Marionette.Object
     demo.game = @game
     
   preload: ->
-    @game.load.image 'sky', 'assets/sky.png'
-    @game.load.image 'ground', 'assets/platform.png'
-    @game.load.image 'star', 'assets/star.png'
-    @game.load.spritesheet 'dude', 'assets/dude.png', 32, 48
+    @game.load.image 'sky', 'assets/phaserdemo/sky.png'
+    @game.load.image 'ground', 'assets/phaserdemo/platform.png'
+    @game.load.image 'star', 'assets/phaserdemo/star.png'
+    @game.load.spritesheet 'dude', 'assets/phaserdemo/dude.png', 32, 48
     
 
   create: ->
@@ -196,6 +195,16 @@ class FrontDoorMainView extends Backbone.Marionette.ItemView
     game.start()
     window.mygame = game
 
+
+class PhaserView extends Backbone.Marionette.ItemView
+  template: PhaserViewTemplate
+
+  onDomRefresh: ->
+    game = new PhaserDemo()
+    game.start()
+    if __DEV__
+      window.mygame = game
+  
 module.exports =
-  FrontDoorMainView: FrontDoorMainView
+  PhaserView: PhaserView
 

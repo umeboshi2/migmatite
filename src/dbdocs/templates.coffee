@@ -9,12 +9,12 @@ marked = require 'marked'
 { form_group_input_div } = require 'bootstrap-teacup-templates/coffee/forms'
 
 { frontdoor_url
-  editor_url } = require '../templates/common'
+  editor_url } = require 'agate/src/templates/common'
 
-{ workflow_dropdown } = require '../templates/editorbar'
+{ workflow_dropdown } = require 'agate/src/templates/editorbar'
 
 
-{ capitalize } = require 'apputil'
+{ capitalize } = require 'agate/src/apputil'
 
 # Main Templates must use teacup.
 # The template must be a teacup.renderable, 

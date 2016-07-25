@@ -5,7 +5,7 @@ FDTemplates = require './templates'
 
 
 { remove_trailing_slashes
-  make_json_post } = require 'apputil'
+  make_json_post } = require 'agate/src/apputil'
 
 #require 'jquery-ui'
 

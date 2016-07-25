@@ -52,7 +52,8 @@ nav_pt_content = tc.renderable (appmodel) ->
       tc.div '#form-search-container'
 
 nav_pt = tc.renderable (appmodel) ->
-  tc.nav '#navbar-view.navbar.navbar-static-top.navbar-inverse',
+  #tc.nav '#navbar-view.navbar.navbar-static-top.navbar-inverse',
+  tc.nav '#navbar-view.navbar.navbar-static-top',
   xmlns:'http://www.w3.org/1999/xhtml', 'xml:lang':'en',
   role:'navigation', ->
     nav_pt_content appmodel

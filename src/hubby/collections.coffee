@@ -1,6 +1,6 @@
 Backbone = require 'backbone'
 
-{ BaseCollection } = require '../collections'
+{ BaseCollection } = require 'agate/src/collections'
 
 HubChannel = Backbone.Radio.channel 'hubby'
 

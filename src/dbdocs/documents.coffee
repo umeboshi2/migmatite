@@ -3,7 +3,7 @@ _ = require 'underscore'
 Backbone = require 'backbone'
 Marionette = require 'backbone.marionette'
 
-{ BaseCollection } = require 'collections'
+{ BaseCollection } = require 'agate/src/collections'
 
 MainChannel = Backbone.Radio.channel 'global'
 MessageChannel = Backbone.Radio.channel 'messages'

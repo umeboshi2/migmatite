@@ -3,12 +3,14 @@ Marionette = require 'backbone.marionette'
 
 Masonry = require 'masonry-layout'
 
+require 'jquery-ui'
+
 HubChannel = Backbone.Radio.channel 'hubby'
 
 #################################
 # templates
 #################################
-{ capitalize } = require 'apputil'
+{ capitalize } = require 'agate/src/apputil'
 
 tc = require 'teacup'
 
@@ -22,7 +24,6 @@ show_meeting_template = tc.renderable (meeting) ->
     agenda_section = 'start'
     for mitem in meeting.meeting_items
       item = meeting.items[mitem.item_id]
-      #console.log agenda_section + '->' + mitem.type
       if mitem.type != agenda_section and mitem.type
         agenda_section = mitem.type
         section_header = capitalize agenda_section + ' Agenda'
@@ -48,6 +49,23 @@ show_meeting_template = tc.renderable (meeting) ->
 class ShowMeetingView extends Backbone.Marionette.ItemView
   template: show_meeting_template
   
+  onDomRefresh: () ->
+    attachments = $ '.hubby-meeting-item-attachments'
+    attachments.hide()
+    attachments.draggable()
+    $('.hubby-meeting-item-info').click ->
+      $(this).next().toggle()
+    $('.hubby-meeting-item-attachment-marker').click ->
+      $(this).next().toggle()
+    $('.hubby-meeting-item-action-marker').click ->
+      if $(this).hasClass('itemaction-loaded')
+        $(this).next().toggle()
+      else
+        itemid = $(this).attr('id')
+        url = '/hubby/frag/itemactions/' + itemid
+        $(this).next().load(url)
+        $(this).addClass('itemaction-loaded')
+      
   
 module.exports = ShowMeetingView
   

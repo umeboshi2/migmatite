@@ -5,8 +5,8 @@ AppTemplates = require '../templates'
 
 # FIXME - these requires depend on fallback directive
 # in webpack
-{ navigate_to_url } = require 'apputil'
-{ show_modal } = require 'regions'
+{ navigate_to_url } = require 'agate/src/apputil'
+{ show_modal } = require 'agate/src/regions'
 
 MainChannel = Backbone.Radio.channel 'global'
 MessageChannel = Backbone.Radio.channel 'messages'

@@ -1,6 +1,6 @@
 Backbone = require 'backbone'
 
-BootStrapAppRouter = require 'bootstrap_router'
+BootStrapAppRouter = require 'agate/src/bootstrap_router'
 
 Controller = require './controller'
 

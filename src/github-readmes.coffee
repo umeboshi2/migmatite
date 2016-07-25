@@ -8,12 +8,12 @@ Marionette = require 'backbone.marionette'
 
 MainChannel = Backbone.Radio.channel 'global'
 MessageChannel = Backbone.Radio.channel 'messages'
-DocChannel = Backbone.Radio.channel 'static-documents'
+GHReadMeChannel = Backbone.Radio.channel 'ghub-readme'
 
-class StaticDocument extends Backbone.Model
+class GHubReadMe extends Backbone.Model
   url: ->
-    "/assets/documents/#{@id}.md"
-  
+    "//github.com/#{id}/README.md"
+    
   fetch: (options) ->
     options = _.extend options || {},
       dataType: 'text'
@@ -21,19 +21,17 @@ class StaticDocument extends Backbone.Model
 
   parse: (response) ->
     return content: response
-    
-class StaticDocumentCollection extends BaseCollection
-  model: StaticDocument
-  
+
+class GHubReadMeCollection extends BaseCollection
+  model: GHubReadMe
 
   
-DocChannel.reply 'get-document', (name) ->
+GHReadMeChannel.reply 'get', (name) ->
   model = new StaticDocument
     id: name
 
 
   
 module.exports =
-  StaticDocument: StaticDocument
+  GHubReadMe: GHubReadMe
   
-

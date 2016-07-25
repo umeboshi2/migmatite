@@ -6,22 +6,17 @@ require 'bootstrap'
 
 #Models = require './models'
 
-Views = require './views'
+Views = require 'agate/src/views'
 AppModel = require './appmodel'
 
-require './clipboard'
-require './messages'
+require 'agate/src/clipboard'
+require 'agate/src/messages'
 require './static-documents'
 require './github-readmes'
 
-#require 'bootstrap-fileinput-css'
-#require 'bootstrap-fileinput-js'
+{ BootstrapModalRegion } = require 'agate/src/regions'
 
-#require 'vie'
-
-{ BootstrapModalRegion } = require './regions'
-
-prepare_app = require 'app-prepare'
+prepare_app = require 'agate/src/app-prepare'
 
 
 MainChannel = Backbone.Radio.channel 'global'

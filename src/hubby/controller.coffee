@@ -2,7 +2,7 @@ $ = require 'jquery'
 Backbone = require 'backbone'
 
 
-{ MainController } = require '../controllers'
+{ MainController } = require 'agate/src/controllers'
 
 MainChannel = Backbone.Radio.channel 'global'
 MessageChannel = Backbone.Radio.channel 'messages'
@@ -30,8 +30,7 @@ class Controller extends MainController
           model: meeting
         @_show_content view
       response.fail =>
-        MessageChannel.request 'display-message',
-        'Failed to load meeting', 'danger'
+        MessageChannel.request 'display-message', 'Failed to load meeting', 'danger'
     # name the chunk
     , 'hubby-meetingview'
 

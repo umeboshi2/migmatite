@@ -29,10 +29,10 @@ require "hallo/src/plugins/blacklist"
 
 rangy = require 'rangy'
 
-BootstrapFormView = require 'bootstrap_formview'
+BootstrapFormView = require 'agate/src/bootstrap_formview'
 
 { remove_trailing_slashes
-  make_json_post } = require 'apputil'
+  make_json_post } = require 'agate/src/apputil'
 
 MainChannel = Backbone.Radio.channel 'global'
 

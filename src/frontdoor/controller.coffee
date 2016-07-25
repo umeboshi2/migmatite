@@ -3,7 +3,7 @@ Backbone = require 'backbone'
 Marionette = require 'backbone.marionette'
 marked = require 'marked'
 
-{ MainController } = require '../controllers'
+{ MainController } = require 'agate/src/controllers'
 
 MainChannel = Backbone.Radio.channel 'global'
 MessageChannel = Backbone.Radio.channel 'messages'

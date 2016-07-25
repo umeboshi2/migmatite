@@ -12,7 +12,7 @@ twilight_theme = require 'brace/theme/twilight'
 
 beautify = require('js-beautify').html
 
-BootstrapFormView = require 'bootstrap_formview'
+BootstrapFormView = require 'agate/src/bootstrap_formview'
 
 
 class KottiResourceFormView extends BootstrapFormView

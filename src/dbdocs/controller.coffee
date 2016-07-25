@@ -4,9 +4,9 @@ Marionette = require 'backbone.marionette'
 marked = require 'marked'
 
 
-Util = require 'apputil'
+Util = require 'agate/src/apputil'
 
-{ MainController } = require '../controllers'
+{ MainController } = require 'agate/src/controllers'
 
 
 MainChannel = Backbone.Radio.channel 'global'

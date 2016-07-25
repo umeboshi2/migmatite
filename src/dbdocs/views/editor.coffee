@@ -3,11 +3,11 @@ Backbone = require 'backbone'
 
 #beautify = require('js-beautify').html
 
-BootstrapFormView = require 'bootstrap_formview'
+BootstrapFormView = require 'agate/src/bootstrap_formview'
 
 { navigate_to_url
-  make_field_input_ui } = require 'apputil'
-HasAceEditor = require 'acebehavior'
+  make_field_input_ui } = require 'agate/src/apputil'
+HasAceEditor = require 'agate/src/acebehavior'
 
 AppTemplates = require '../templates'
 
