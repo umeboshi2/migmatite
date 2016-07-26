@@ -1,3 +1,4 @@
+$ = require 'jquery'
 Backbone = require 'backbone'
 
 BootStrapAppRouter = require 'agate/src/bootstrap_router'
