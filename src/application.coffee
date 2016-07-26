@@ -97,6 +97,7 @@ require 'frontdoor/main'
 require 'dbdocs/main'
 require 'phaserdemo/main'
 require 'hubby/main'
+require 'bumblr/main'
  
 
 
