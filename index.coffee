@@ -1,18 +1,27 @@
-require './stylesheets/font-awesome.css'
-require './stylesheets/styles.css'
-
-require 'bootstrap'
-
 tc = require 'teacup'
-$ = require 'jquery'
 
-button = tc.renderable () ->
-  tc.div '#bb.btn.btn-default', ->
-    tc.i '.fa.fa-bicycle'
-    tc.text 'Halflings"'
-    
-
-document.write button()
-
-window.bb = $('#bb')
-bb.hide()
+index = tc.renderable (manifest, theme) ->
+  tc.doctype()
+  tc.html xmlns:'http://www.w3.org/1999/xhtml', ->
+    tc.head ->
+      tc.meta charset:'utf-8'
+      tc.link rel:'stylesheet', type:'text/css',
+      href:"stylesheets/fontawesome.css"
+      tc.link rel:'stylesheet', type:'text/css',
+      href:"stylesheets/bootstrap-#{theme}.css"
+    tc.body ->
+      tc.div '.container-fluid', ->
+        tc.div '.row', ->
+          tc.div '.col-sm-2'
+          tc.div '.col-sm-6.jumbotron', ->
+            tc.h1 ->
+              tc.text 'Loading ...'
+              tc.i '.fa.fa-spinner.fa-spin'
+          tc.div '.col-sm-2'
+      tc.script
+        type: 'text/javascript'
+        charset: 'utf-8'
+        src: "build/#{manifest['app.js']}"
+              
+      
+module.exports = index

@@ -79,3 +79,8 @@ npm install
 - gulp-size
 
 - gulp-util
+
+
+## Marionette Application
+
+The top level script requires the modules that setup the radio channels.  An "appmodel" object helps to define the structure and contents of the application, helping to standardize the setup code.
