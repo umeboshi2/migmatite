@@ -1,7 +1,3 @@
-Backbone = require 'backbone'
-Marionette = require 'backbone.marionette'
-
-Util = require 'agate/src/apputil'
 BootStrapAppRouter = require 'agate/src/bootstrap_router'
 
 Controller = require './controller'

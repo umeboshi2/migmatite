@@ -1,8 +1,3 @@
-$ = require 'jquery'
-Backbone = require 'backbone'
-Marionette = require 'backbone.marionette'
-marked = require 'marked'
-
 { MainController } = require 'agate/src/controllers'
 
 MainChannel = Backbone.Radio.channel 'global'

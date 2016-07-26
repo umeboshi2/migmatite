@@ -1,10 +1,3 @@
-$ = require 'jquery'
-Backbone = require 'backbone'
-Marionette = require 'backbone.marionette'
-marked = require 'marked'
-
-
-Util = require 'agate/src/apputil'
 
 { MainController } = require 'agate/src/controllers'
 

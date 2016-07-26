@@ -1,12 +1,7 @@
-$ = require 'jquery'
-Backbone = require 'backbone'
-
-
 { MainController } = require 'agate/src/controllers'
 
 MainChannel = Backbone.Radio.channel 'global'
 MessageChannel = Backbone.Radio.channel 'messages'
-ResourceChannel = Backbone.Radio.channel 'resources'
 
 class Controller extends MainController
   mainview: ->
