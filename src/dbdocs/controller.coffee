@@ -1,4 +1,3 @@
-
 { MainController } = require 'agate/src/controllers'
 
 
